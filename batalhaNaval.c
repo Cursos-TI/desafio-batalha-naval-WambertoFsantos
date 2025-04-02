@@ -5,6 +5,29 @@
 // Siga os comentários para implementar cada parte do desafio.
 
 int main() {
+int tabuleiro[10][10] = {0}; // Tabuleiro 10x10 inicializado com 0 (água)
+
+// Posiciona um navio vertical (linhas 2-4, coluna 1)
+for (int linha = 2; linha <= 4; linha++) {
+    tabuleiro[linha][1] = 3; // 3 = navio
+}
+
+// Posiciona um navio horizontal (linha 9, colunas 6-8)
+for (int coluna = 6; coluna <= 8; coluna++) {
+    tabuleiro[9][coluna] = 3;
+}
+
+printf("     A B C D E F G H I J\n"); // As linha de cabeçalho das colunas
+printf("     ___________________\n"); 
+
+
+for (int linha = 0; linha < 10; linha++) {
+    printf("%2d  |", linha + 1); // Número da linha (1-10)
+    for (int coluna = 0; coluna < 10; coluna++) {
+        printf("%d ", tabuleiro[linha][coluna]);
+    }
+    printf("\n");
+}
     // Nível Novato - Posicionamento dos Navios
     // Sugestão: Declare uma matriz bidimensional para representar o tabuleiro (Ex: int tabuleiro[5][5];).
     // Sugestão: Posicione dois navios no tabuleiro, um verticalmente e outro horizontalmente.
