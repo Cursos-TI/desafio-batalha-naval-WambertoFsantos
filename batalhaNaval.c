@@ -4,30 +4,43 @@
 // Este código inicial serve como base para o desenvolvimento do sistema de Batalha Naval.
 // Siga os comentários para implementar cada parte do desafio.
 
+#define linhas 10
+#define colunas 10
+
 int main() {
-int tabuleiro[10][10] = {0}; // Tabuleiro 10x10 inicializado com 0 (água)
+    int tabuleiro[linhas][colunas] = {0}; 
 
-// Posiciona um navio vertical (linhas 2-4, coluna 1)
-for (int linha = 2; linha <= 4; linha++) {
-    tabuleiro[linha][1] = 3; // 3 = navio
-}
-
-// Posiciona um navio horizontal (linha 9, colunas 6-8)
-for (int coluna = 6; coluna <= 8; coluna++) {
-    tabuleiro[9][coluna] = 3;
-}
-
-printf("     A B C D E F G H I J\n"); // As linha de cabeçalho das colunas
-printf("     ___________________\n"); 
-
-
-for (int linha = 0; linha < 10; linha++) {
-    printf("%2d  |", linha + 1); // Número da linha (1-10)
-    for (int coluna = 0; coluna < 10; coluna++) {
-        printf("%d ", tabuleiro[linha][coluna]);
+    // Posiciona um navio vertical (linhas 2-4, coluna 1) 
+    for (int l = 2; l <= 4; l++) { //Posicionamento navio. l=2 (que comeca na linha 2 {0,1,2}), l<=4 termina na linha 4 {0,1,2,3,4}. ocupando a linha {2,3,4}
+        tabuleiro[l][1] = 3; // 3 = navio
     }
-    printf("\n");
-}
+    
+    // Posiciona um navio horizontal (linha 9, colunas 6-8)
+    for (int c = 6; c <= 8; c++) {
+        tabuleiro[9][c] = 3; // 3 = navio
+    }
+
+     // Posiciona um navio DIAGONA [3][3],[2][4],[1][5]
+     for (int l = 0; l < 3; l++) {
+        tabuleiro[3-l][3+l] = 3; // 3 = navio ([linha inicial][coluna inicial] , - na linha vai para esquerda, - na coluna sobe).
+    }
+
+    // Posiciona um navio DIAGONA [9][0],[8][1],[7][2]
+    for (int l = 0; l < 3; l++) {
+        tabuleiro[9-l][0+l] = 3; // 3 = navio ([linha inicial][coluna inicial] , - na linha vai para esquerda, - na coluna sobe).
+    }
+
+    printf("     A B C D E F G H I J\n"); // As linha de cabeçalho das colunas
+    printf("     ___________________\n"); 
+
+    
+    for (int l = 0; l < 10; l++) {
+        printf("%2d  |", l + 1 ); //imprime coluna com numero das linhas.
+        for (int c = 0; c < 10; c++) {
+            printf("%d ", tabuleiro[l][c]);
+        }
+        printf("\n");
+    }
     // Nível Novato - Posicionamento dos Navios
     // Sugestão: Declare uma matriz bidimensional para representar o tabuleiro (Ex: int tabuleiro[5][5];).
     // Sugestão: Posicione dois navios no tabuleiro, um verticalmente e outro horizontalmente.
